@@ -15,3 +15,15 @@ def test_counter_report():
     example = Counter()
     result = example.report()
     assert result == "Counted to 0 so far."
+
+def test_counter_add_report():
+    example = Counter()
+    example.add(1000)
+    result = example.report()
+    assert result == "Counted to 1000 so far."
+
+def test_counter_negative_number():
+    example = Counter()
+    example.add(-3)
+    result = example.count
+    assert result == -3
