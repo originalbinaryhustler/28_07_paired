@@ -84,3 +84,84 @@ def test_extract_uppercase_with_upper_then_lower():
     assert result == ["WORLD"]
 Ensure all test function names are unique, otherwise pytest will ignore them!
 
+TWO
+
+1. Describe the Problem
+As a user
+So that I can improve my grammar
+I want to verify that a text starts with a capital letter and ends with a suitable sentence-ending punctuation mark.
+
+2. Design the Function Signature
+
+def grammar_check(text):
+    '''Returns a boolean if the string starts with a capital letter and ends with a suitable sentence-ending punctuation mark e.g. . !
+
+    Parameters:
+        text: a string representing some text (e.g 'Hello, my name is Ben. It is nice to meet you.')
+    
+    Returns:
+        A boolean
+    
+    Side effects:
+        This function doesn't have any other side effects
+    '''
+    pass
+
+3. Create Examples as Tests
+Make a list of examples of what the function will take and return.
+
+'''
+Given an empty string
+Should return False
+'''
+grammar_check('') => False
+
+'''
+Given a string that starts with a lower case letter
+Should return False
+'''
+grammar_check('ami') => False
+
+'''
+Given a string starting with a capital letter
+Should return True
+'''
+grammar_check('Ami') => True
+
+'''
+Given a string starting with a capital letter but not ending with a suitable punctuation mark
+Should return False
+'''
+grammar_check('Hello') =>False
+
+'''
+Given a string starting with a capital letter and ending with a suitable punctuation mark
+Should return True
+'''
+grammar_check('Makers!') => True
+
+'''
+Given a string that starts with a lowercase letter but ends with a suitable punctuation mark
+Should return False
+'''
+grammar_check('makers.') => False
+
+
+
+4. Implement the Behaviour
+After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
+
+Here's an example for you to start with:
+
+# EXAMPLE
+
+from lib.extract_uppercase import *
+
+"""
+Given a lower and an uppercase word
+It returns a list with the uppercase word
+"""
+def test_extract_uppercase_with_upper_then_lower():
+    result = extract_uppercase("hello WORLD")
+    assert result == ["WORLD"]
+Ensure all test function names are unique, otherwise pytest will ignore them!
