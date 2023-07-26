@@ -165,3 +165,78 @@ def test_extract_uppercase_with_upper_then_lower():
     result = extract_uppercase("hello WORLD")
     assert result == ["WORLD"]
 Ensure all test function names are unique, otherwise pytest will ignore them!
+
+THREE
+
+1. Describe the Problem
+As a user
+So that I can keep track of my tasks
+I want to check if a text includes the string #TODO.
+
+2. Design the Function Signature
+
+def check_todo(text):
+    '''Returns a Boolean if the input string contains the string '#TODO' (case sensitive)
+
+    Parameters:
+        text: a string representing some text (e.g '#TODO homework')
+    
+    Returns:
+        A boolean
+    
+    Side effects:
+        This function doesn't have any other side effects
+    '''
+    pass
+
+3. Create Examples as Tests
+Make a list of examples of what the function will take and return.
+
+'''
+Given an empty string
+It should return False
+'''
+check_todo('') => False
+
+'''
+Given a string that does not contain #TODO
+Should return False
+'''
+check_todo('Hello there') => False
+
+'''
+Given a string that contains a lower_case #TODO
+Should return Flase
+'''
+check_todo('#todo go for a walk') => False
+
+'''
+Given a string that contains an upper_case #TODO 
+Should return True
+'''
+check_todo('#TODO walk the dog!') => True
+
+'''
+Given an argument that is not a string
+Should throw an exception error
+'''
+check_todo(100) => Exception Error
+
+
+4. Implement the Behaviour
+After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
+
+Here's an example for you to start with:
+
+# EXAMPLE
+
+from lib.extract_uppercase import *
+
+"""
+Given a lower and an uppercase word
+It returns a list with the uppercase word
+"""
+def test_extract_uppercase_with_upper_then_lower():
+    result = extract_uppercase("hello WORLD")
+    assert result == ["WORLD"]
+Ensure all test function names are unique, otherwise pytest will ignore them!
