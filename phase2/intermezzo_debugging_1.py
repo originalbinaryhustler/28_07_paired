@@ -13,6 +13,7 @@ def encode(text, key):
     ciphertext_chars = []
     for i in text:
         ciphered_char = chr(65 + cipher.index(i))
+        print(f'This is ciphered_ char \n{ciphered_char} \n')
         ciphertext_chars.append(ciphered_char)
 
     return "".join(ciphertext_chars)
@@ -23,14 +24,16 @@ def decode(encrypted, key):
 
     plaintext_chars = []
     for i in encrypted:
-        plain_char = cipher[65 - ord(i)]
+        plain_char = cipher[ord(i) - 65]
+        print(f'This is plain_char \n {plain_char} \n')
         plaintext_chars.append(plain_char)
 
     return "".join(plaintext_chars)
 
 
 def make_cipher(key):
-    alphabet = [chr(i + 98) for i in range(1, 26)]
+    alphabet = [chr(i + 97) for i in range(0, 26)]
+    print(f'This is alphabet \n {alphabet} \n')
     cipher_with_duplicates = list(key) + alphabet
 
     cipher = []
