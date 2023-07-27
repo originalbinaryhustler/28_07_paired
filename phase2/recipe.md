@@ -1,4 +1,4 @@
-ONE
+ONE----------------------------------------------------------------------------------------------
 
 1. Describe the Problem
 As a user
@@ -84,7 +84,7 @@ def test_extract_uppercase_with_upper_then_lower():
     assert result == ["WORLD"]
 Ensure all test function names are unique, otherwise pytest will ignore them!
 
-TWO
+TWO----------------------------------------------------------------------------------------------
 
 1. Describe the Problem
 As a user
@@ -166,7 +166,7 @@ def test_extract_uppercase_with_upper_then_lower():
     assert result == ["WORLD"]
 Ensure all test function names are unique, otherwise pytest will ignore them!
 
-THREE
+THREE----------------------------------------------------------------------------------------------
 
 1. Describe the Problem
 As a user
@@ -242,7 +242,7 @@ def test_extract_uppercase_with_upper_then_lower():
 Ensure all test function names are unique, otherwise pytest will ignore them!
 
 
-FOUR----------------------------------------------
+FOUR----------------------------------------------------------------------------------------------
 
 
 
@@ -319,49 +319,49 @@ reminder.add_task('Clean up!')
 reminder.task_list # => ['Go home and study!','Clean up!']
 
 """
+Check add function with input that isn't a string
+Should throw an error
+"""
+reminder = TaskTracker()
+reminder.add_task(100) => 'Error: Input not of string type'
+
+"""
 Calling view_task method on an instance
 Check the format of the list returning is correct format as proposed
 """
 reminder = TaskTracker()
 reminder.add_task('Charge laptop')
-reminder.view_task() # => f'You have the following tasks remaining:\n * {task}'
+reminder.add_task('Go shopping')
+reminder.view_task() # => f'You have the following tasks remaining:
+                                * Charge laptop
+                                * Go shopping'
 
 """
 Calling task_complete with a task in self.task_list
 Should retun a formatted string with task complete and remove task from self.task_list
 """
-
 reminder = TaskTracker()
 reminder.add_task('Walk the dog!')
-reminder.task_complete # => 'Task Completed: \n * {task} '
-
-
-
-
+reminder.add_task('Clean the kitchen')
+reminder.task_complete('Walk the dog!') # => 'Task Completed: Walk the dog!'
+reminder.task_list => ['Clean the kitchen']
 
 """
-Given a name and a task
-#remind reminds the user to do the task
+Calling task_complete with a task not in self.task_list
+Should return an Exception
 """
-reminder = Reminder("Kay")
-reminder.remind_me_to("Walk the dog")
-reminder.remind() # => "Walk the dog, Kay!"
+reminder = TaskTracker()
+reminder.add_task('Walk the dog!')
+reminder.task_complete('Call mum') # => 'Error: Task not in Task List. Please use the add_task method first.'
 
 """
-Given a name and no task
-#remind raises an exception
+Calling task_complete with an input that isn't a string
+Should throw an error
 """
-reminder = Reminder("Kay")
-reminder.remind() # raises an error with the message "No task set."
+reminder = TaskTracker()
+reminder.add_task('Walk the dog!')
+reminder.task_complete(100) # => 'Error: Input not of string type'
 
-"""
-Given a name and an empty task
-#remind still reminds the user to do the task, even though it looks odd
-"""
-reminder = Reminder("Kay")
-reminder.remind_me_to("")
-reminder.remind() # => ", Kay!"
-Encode each example as a test. You can add to the above list as you go.
 
 4. Implement the Behaviour
 
