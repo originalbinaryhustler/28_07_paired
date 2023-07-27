@@ -37,12 +37,35 @@ def test_init_of_class():
 
 def test_check_asserts():
     example = GrammarStats()
-    assert example.check('') == False
     assert example.check('hey') == False
     assert example.check('Hey') == False
     assert example.check('hey!') == False
     assert example.check('Hey!') == True
-    assert example.check(100) == False
+
+def test_check_percentage_successive_checks_made():
+    example = GrammarStats()
+    assert example.percentage_good() == 0
+    example.check('Hey!')
+    assert example.percentage_good() == 100
+    example.check('hey')
+    assert example.percentage_good() == 50
+    example.check('Benedict.')
+    example.check('YASIEN?')
+    assert example.percentage_good() == 75
+
+def test_check_percentage_one_false_check_made():
+    example = GrammarStats()
+    example.check('hey')
+    assert example.percentage_good() == 0
+
+def test_assertion_err_in_check_method():
+    example = GrammarStats()
+    with pytest.raises(Exception) as err:
+        example.check('')
+        example.check(100)
+    error_message = str(err.value)
+    assert error_message == 'Error: Instance type must be a string'
+    
 
 
 
@@ -67,6 +90,7 @@ Tests:
 
 3.
     for percentage_good
+        Check that no grammar checks returns 0
         Check 1 True in 1 check returns 100
         Check that 1 False in 1 check returns 0
         Check that 1 True and 1 False in 2 checks returns 50
