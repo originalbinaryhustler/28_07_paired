@@ -24,3 +24,8 @@ def test_reading_time_functions_correctly():
 def test_reading_chunk_intial_assert():
     example = DiaryEntry('Diary', 'My name is Ben')
     assert example.reading_chunk(3, 1) == 'My Diary: My'
+
+def test_reading_chunk_second_assert():
+    example = DiaryEntry('Diary', 'My name is Ben')
+    example.reading_chunk(3, 1)
+    assert example.reading_chunk(3, 1) == 'name is Ben'
