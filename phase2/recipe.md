@@ -240,3 +240,130 @@ def test_extract_uppercase_with_upper_then_lower():
     result = extract_uppercase("hello WORLD")
     assert result == ["WORLD"]
 Ensure all test function names are unique, otherwise pytest will ignore them!
+
+
+FOUR----------------------------------------------
+
+
+
+1. Describe the Problem
+
+As a user
+So that I can keep track of my tasks
+I want a program that I can add todo tasks to and see a list of them.
+As a user
+So that I can focus on tasks to complete
+I want to mark tasks as complete and have them disappear from the list.
+
+2. Design the Class Interface
+
+Include the initializer, public properties, and public methods with all parameters, return values, and side-effects.
+
+# EXAMPLE
+
+class TaskTracker:
+    # User-facing properties:
+    #   name: string
+
+    def __init__(self):
+        # Parameters: 0
+        #   
+      
+        self.task_list = []
+        
+
+    def add_task(self, task):
+        # Parameters:
+        #   task: string representing a single task
+        # Returns:
+        #   Nothing
+        # Side-effects
+        #   Saves the task to the self object
+        pass # No code here yet
+
+    def view_task(self):
+        # Returns:
+        #   A return string of tasks 'new lines for each tasks (Tasks to complete: new line and bullet points *)
+        # Side-effects:
+        #   Throws an exception if no task is set
+        pass # No code here yet
+
+    def task_complete(self, task):
+        # Returns:
+        #   Returns a string f'You have completed {Task}' 
+        #   pop the task thats complete from the self.task_list
+        #
+        #
+3. Create Examples as Tests
+
+Make a list of examples of how the class will behave in different situations.
+
+# EXAMPLE
+
+"""
+Initialise an instance of the class 
+Class initialised with empty list
+"""
+reminder = TaskTracker()
+reminder.task_list # => []
+
+"""
+Check the add function with tasks
+self.task_list contains the tasks 
+"""
+reminder = TaskTracker()
+reminder.add_task('Go home and study!')
+reminder.task_list # => ['Go home and study!]
+
+reminder.add_task('Clean up!')
+reminder.task_list # => ['Go home and study!','Clean up!']
+
+"""
+Calling view_task method on an instance
+Check the format of the list returning is correct format as proposed
+"""
+reminder = TaskTracker()
+reminder.add_task('Charge laptop')
+reminder.view_task() # => f'You have the following tasks remaining:\n * {task}'
+
+"""
+Calling task_complete with a task in self.task_list
+Should retun a formatted string with task complete and remove task from self.task_list
+"""
+
+reminder = TaskTracker()
+reminder.add_task('Walk the dog!')
+reminder.task_complete # => 'Task Completed: \n * {task} '
+
+
+
+
+
+"""
+Given a name and a task
+#remind reminds the user to do the task
+"""
+reminder = Reminder("Kay")
+reminder.remind_me_to("Walk the dog")
+reminder.remind() # => "Walk the dog, Kay!"
+
+"""
+Given a name and no task
+#remind raises an exception
+"""
+reminder = Reminder("Kay")
+reminder.remind() # raises an error with the message "No task set."
+
+"""
+Given a name and an empty task
+#remind still reminds the user to do the task, even though it looks odd
+"""
+reminder = Reminder("Kay")
+reminder.remind_me_to("")
+reminder.remind() # => ", Kay!"
+Encode each example as a test. You can add to the above list as you go.
+
+4. Implement the Behaviour
+
+After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
+
