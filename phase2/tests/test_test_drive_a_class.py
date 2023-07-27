@@ -29,3 +29,22 @@ def test_reading_chunk_second_assert():
     example = DiaryEntry('Diary', 'My name is Ben')
     example.reading_chunk(3, 1)
     assert example.reading_chunk(3, 1) == 'name is Ben'
+
+def test_reading_chunk_third_assert():
+    example = DiaryEntry('Diary', 'My name is Ben, how are you?')
+    example.reading_chunk(3, 1)
+    assert example.reading_chunk(3, 1) == 'name is Ben,'
+
+def test_assert_reading_time_input_bool():
+    example = DiaryEntry('Diary', 'My name is Ben, how are you?')
+    with pytest.raises(Exception) as err:
+        example.reading_time(True)
+    error_message = str(err.value)
+    assert error_message == 'Error: WPM should be of type integer.'
+
+def test_assert_reading_time_input_not_int():
+    example = DiaryEntry('Diary', 'My name is Ben, how are you?')
+    with pytest.raises(Exception) as err:
+        example.reading_time('100')
+    error_message = str(err.value)
+    assert error_message == 'Error: WPM should be of type integer.'
