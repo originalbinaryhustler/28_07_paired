@@ -281,7 +281,7 @@ class TaskTracker:
         #   Saves the task to the self object
         pass # No code here yet
 
-    def view_task(self):
+    def view_tasks(self):
         # Returns:
         #   A return string of tasks 'new lines for each tasks (Tasks to complete: new line and bullet points *)
         # Side-effects:
@@ -326,13 +326,19 @@ reminder = TaskTracker()
 reminder.add_task(100) => 'Error: Input not of string type'
 
 """
+Calling view_task method on an instance with an empty task list
+Should return a message telling the user the list is empty
+"""
+reminder = TaskTracker()
+reminder.view_tasks()
+
 Calling view_task method on an instance
 Check the format of the list returning is correct format as proposed
 """
 reminder = TaskTracker()
 reminder.add_task('Charge laptop')
 reminder.add_task('Go shopping')
-reminder.view_task() # => f'You have the following tasks remaining:
+reminder.view_tasks() # => f'You have the following tasks remaining:
                                 * Charge laptop
                                 * Go shopping'
 
@@ -367,3 +373,165 @@ reminder.task_complete(100) # => 'Error: Input not of string type'
 
 After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
 
+
+
+
+FIVE----------------------------------------------------------------------------------------------
+
+
+
+1. Describe the Problem
+
+As a user
+So that I can keep track of my music listening
+I want to add tracks I've listened to and see a list of them
+
+2. Design the Class Interface
+
+Include the initializer, public properties, and public methods with all parameters, return values, and side-effects.
+
+# EXAMPLE
+
+class MusicLibrary:
+    
+    def __init__(self):
+        # Parameters:
+        #   None  
+        #   
+        # Attributes:  
+        #   self.music_dict = {}
+        
+
+    def add_track(self, artist, track):
+        # Parameters:
+        #   artist: string representing an artist or band
+        #   track: string representing a track name
+        # Returns:
+        #   Nothing
+        # Side-effects:
+        #   Saves the artist and a track as a key: value pair in the self.music dict. Tracks will be saved in a list.
+        #   Prints a message to the user stating that the track has been added
+        pass # No code here yet
+
+    def view_artists(self):
+        # Parameters:
+        #   None
+        # Returns:
+        #   Nothing
+        # Side-effects:
+        #   Prints each artist on a new line
+        pass # No code here yet
+
+    def view_tracks_by_artist(self, artist):
+        # Parameters:
+        #   artist: a string representing an artist stored in the music_dict
+        # Returns:
+        #   Nothing 
+        #  Side-effects:
+        #   Prints each song by the given artist on a new line
+    
+    def view_library(self):
+        # Parameters:
+        #   None
+        # Returns:
+        #   None
+        # Side-effects:
+        #   Prints a formatted string for each artist with the name of the artist followed by each song
+        #       that artist has in the dictionary. E.g. Pink Floyd: Money, Shine On You Crazy Diamond
+    
+    def remove_track(self, artist, track):
+        # Parameters:
+        #   artist: string representing an artist or band
+        #   track: string representing a track name
+        # Returns:
+        #   None
+        # Side-effects:
+        #   Prints a message saying the track has been removed
+        #   Removes the track from the music_dict
+    
+    def remove_artist(self, artist):
+        # Parameters:
+        #   artist: string representing an artist or band
+        # Returns:
+        #   None
+        # Side-effects:
+        #   Prints a message saying the artist has been removed
+        #   Removes the dictionary with the key value matching the given artist
+    
+    def favourite_artist(self):
+        # Parameters:
+        #   None
+        # Returns:
+        #   None
+        # Side-effects:
+        #   Prints the name of the artist with the most songs and stating how many songs they have
+    
+3. Create Examples as Tests
+
+Make a list of examples of how the class will behave in different situations.
+
+# EXAMPLE
+
+"""
+Initialise an instance of the class 
+Class initialised with empty dict
+"""
+library = MusicLibrary()
+library.music_dict # => {}
+
+"""
+Check the add track function with artist: track pairs
+self.music_dict contains the artist: tracks key, value pairs
+"""
+library = MusicLibrary()
+library.add_track('Pink Floyd', 'Money')
+library.music_dict # => {'Pink Floyd': ['Money']}
+library.add_track('Elbow', 'Starlings')
+library.music_dict # => {'Pink Floyd': ['Money'], 'Elbow': ['Starlings']}
+library.add_track('Pink Floyd', 'Breathe')
+library.music_dict # => {'Pink Floyd': ['Money', 'Breathe'], 'Elbow': ['Starlings']}
+
+"""
+Check the add track function using the wrong object type
+Should throw an error
+"""
+library = MusicLibrary()
+library.add_track(100, True) # => 'Error: Please ensure inputs are of the type string.'
+
+"""
+Check remove_track method with an artist and track pair
+Should remove track from the music_dict
+"""
+library = MusicLibrary()
+library.add_track('Pink Floyd', 'Money')
+library.add_track('Pink Floyd', 'Breathe')
+library.remove_track('Pink Floyd', 'Money')
+library.music_dict # => {'Pink Floyd': ['Breathe']}
+
+"""
+Check the view tracks function using the wrong object type
+Should throw an error
+"""
+library = MusicLibrary()
+library.view_tracks_by_artist(100) # => 'Error: Please ensure input is of the type string.'
+
+"""
+Check the remove tracks function using the wrong object type
+Should throw an error
+"""
+library = MusicLibrary()
+library.remove_track(100, True) # => 'Error: Please ensure inputs are of the type string.'
+
+"""
+Check the remove artist function using the wrong object type
+Should throw an error
+"""
+library = MusicLibrary()
+library.remove_artist(100) # => 'Error: Please ensure input is of the type string.'
+
+
+
+
+4. Implement the Behaviour
+
+After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
