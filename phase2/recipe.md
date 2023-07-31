@@ -437,7 +437,7 @@ class MusicLibrary:
         #   None
         # Side-effects:
         #   Prints a formatted string for each artist with the name of the artist followed by each song
-        #       that artist has in the dictionary. E.g. Pink Floyd: Money, Shine On You Crazy Diamond
+        #       that artist has in the dictionary. E.g. Tupac: Starin Through My Rearview
     
     def remove_track(self, artist, track):
         # Parameters:
@@ -484,12 +484,12 @@ Check the add track function with artist: track pairs
 self.music_dict contains the artist: tracks key, value pairs
 """
 library = MusicLibrary()
-library.add_track('Pink Floyd', 'Money')
-library.music_dict # => {'Pink Floyd': ['Money']}
-library.add_track('Elbow', 'Starlings')
-library.music_dict # => {'Pink Floyd': ['Money'], 'Elbow': ['Starlings']}
-library.add_track('Pink Floyd', 'Breathe')
-library.music_dict # => {'Pink Floyd': ['Money', 'Breathe'], 'Elbow': ['Starlings']}
+library.add_track('Tupac', 'Uppercut')
+library.music_dict # => {'Tupac': ['Uppercut']}
+library.add_track('Nipsey Hussle', ''Blue Laces'')
+library.music_dict # => {'Tupac': ['Uppercut'], 'Nipsey Hussle': ['Blue Laces']}
+library.add_track('Tupac', 'The Return')
+library.music_dict # => {'Tupac': ['Uppercut', 'The Return'], 'Nipsey Hussle': ['Blue Laces']}
 
 """
 Check the add track function using the wrong object type
@@ -503,10 +503,10 @@ Check remove_track method with an artist and track pair
 Should remove track from the music_dict
 """
 library = MusicLibrary()
-library.add_track('Pink Floyd', 'Money')
-library.add_track('Pink Floyd', 'Breathe')
-library.remove_track('Pink Floyd', 'Money')
-library.music_dict # => {'Pink Floyd': ['Breathe']}
+library.add_track('Tupace', 'Uppercut')
+library.add_track('Tupac', 'Starin Through My Rearview')
+library.remove_track('Tupac', 'Uppercut')
+library.music_dict # => {'Pink Tupac': ['Starin Through My Rearview']}
 
 """
 Check the view tracks function using the wrong object type
