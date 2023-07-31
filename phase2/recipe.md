@@ -506,7 +506,7 @@ library = MusicLibrary()
 library.add_track('Tupace', 'Uppercut')
 library.add_track('Tupac', 'Starin Through My Rearview')
 library.remove_track('Tupac', 'Uppercut')
-library.music_dict # => {'Pink Tupac': ['Starin Through My Rearview']}
+library.music_dict # => {'Tupac': ['Starin Through My Rearview']}
 
 """
 Check the view tracks function using the wrong object type

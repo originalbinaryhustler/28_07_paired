@@ -32,4 +32,13 @@ def test_view_library():
     music.add_track('Tupac','Hail Mairy')
     music.add_track('Tupac','Starin Through My Rearview')
     result = music.view_library()
-    assert result == 'Tupac:\nUppercut\nHail mairy\nStaring Through My Rearview\n\n The Jacka:\nDie Young\nHamm Sammich'
+    assert result == [('Tupac', ['Uppercut', 'Hail Mairy', 'Starin Through My Rearview']), ('The Jacka', ['Die Young', 'Hamm Sammich'])]
+
+
+def test_remove_artist():
+    music = MusicTracker()
+    music.add_track('Tupace', 'Uppercut')
+    music.add_track('Tupac', 'Starin Through My Rearview')
+    music.remove_track('Tupac', 'Uppercut')
+    result = music.view_tracks_by_artist('Tupac')
+    assert result == {'Tupac': ['Starin Through My Rearview']}
